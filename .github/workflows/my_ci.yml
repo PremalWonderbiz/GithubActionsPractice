@@ -15,6 +15,6 @@ jobs:
       - name: Pring Hello
         id: printmsg
         run: |
-          sleep 30s
+          sleep 10s
           echo "Hello world!"
       
