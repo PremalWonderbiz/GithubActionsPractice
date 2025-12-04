@@ -12,9 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ==========================================================
+      # CHECKOUT
+      # ==========================================================
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
       - name: Pring Hello
         id: printmsg
         run: |
-          sleep 10s
+          sleep 5s
           echo "Hello world!"
+
+      # ==========================================================
+      # DETECT CHANGES (AUTO-ENABLE BACKEND/FRONTEND SONAR)
+      # ==========================================================
+      - name: Detect Changed Backend/Frontend Projects
+        id: detect_changes
+        shell: pwsh
+        run: |
+          Write-Host "Detecting changed files..."
+
+          # Get list of changed files in PR or push
+          $changedFiles = git diff --name-only HEAD~1 HEAD
+
+          Write-Host "Changed files:"
+          Write-Host $changedFiles
       
