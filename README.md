@@ -1,3 +1,3 @@
 # GithubActionsPractice
 
-first edit
+second edit
