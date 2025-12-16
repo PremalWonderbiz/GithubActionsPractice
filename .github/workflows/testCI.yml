@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    if: contains(join(github.event.commits.*.message, ' '), 'build')
+    if: contains(join(github.event.commits.*.message, ' '), 'build') || contains(github.event.pull_request.title, 'build')
     runs-on: ubuntu-latest
 
     steps:
