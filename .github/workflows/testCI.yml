@@ -9,11 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Tests triggered"
-             $containsBuild = contains(
-              join(github.event.commits.*.message, ' '),
-              '[build]'
-              )
-             $commitMessage = join(github.event.commits.*.message, ' ')
-             echo "contains Build=$containsBuild"
-             echo "commit message=$commitMessage"
+      - name: Debug commit messages
+        run: |
+          echo "commit message=${{ join(github.event.commits.*.message, ' ') }}"
+          echo "contains build=${{ contains(join(github.event.commits.*.message, ' '), '[build]') }}"
