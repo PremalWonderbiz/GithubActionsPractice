@@ -26,4 +26,5 @@ jobs:
         run: |
           echo "commit message=${{ join(github.event.commits.*.message, ' ') }}"
           echo "contains build=${{ contains(join(github.event.commits.*.message, ' '), 'build') }}"
-          echo "contains build=${{ contains(github.event.pull_request.title, 'build') }}"
+          echo "PR Title=${{ github.event.pull_request.title }}"
+          echo "PR Title contains build=${{ contains(github.event.pull_request.title, 'build') }}"
