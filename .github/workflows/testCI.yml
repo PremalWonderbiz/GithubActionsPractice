@@ -14,3 +14,12 @@ jobs:
         run: |
           echo "commit message=${{ join(github.event.commits.*.message, ' ') }}"
           echo "contains build=${{ contains(join(github.event.commits.*.message, ' '), 'build') }}"
+
+  test2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Debug commit messages
+        run: |
+          echo "commit message=${{ join(github.event.commits.*.message, ' ') }}"
+          echo "contains build=${{ contains(join(github.event.commits.*.message, ' '), 'build') }}"
