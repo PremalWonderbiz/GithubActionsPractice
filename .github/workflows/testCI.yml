@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  if: contains(join(github.event.commits.*.message, ' '), 'build') == 'true'
+  if: contains(join(github.event.commits.*.message, ' '), 'build')
   test:
     runs-on: ubuntu-latest
 
