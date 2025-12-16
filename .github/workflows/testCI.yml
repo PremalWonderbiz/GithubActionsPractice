@@ -5,8 +5,8 @@ on:
     branches: [ main ]
 
 jobs:
-  if: contains(join(github.event.commits.*.message, ' '), 'build')
   test:
+    if: contains(join(github.event.commits.*.message, ' '), 'build')
     runs-on: ubuntu-latest
 
     steps:
