@@ -1,0 +1,17 @@
+name: Conditional Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    if: >
+      contains(
+        join(github.event.commits.*.message, ' '),
+        '[build]'
+      )
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Tests triggered"
