@@ -6,11 +6,6 @@ on:
 
 jobs:
   test:
-    if: >
-      contains(
-        join(github.event.commits.*.message, ' '),
-        '[build]'
-      )
     runs-on: ubuntu-latest
 
     steps:
