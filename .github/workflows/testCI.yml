@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    if: contains(join(github.event.commits.*.message, ' '), 'build')
+    if: contains(join(github.event.commits.*.message, ' '), 'build') || contains(github.event.pull_request.title, 'build')
     runs-on: ubuntu-latest
 
     steps:
@@ -16,6 +16,8 @@ jobs:
         run: |
           echo "commit message=${{ join(github.event.commits.*.message, ' ') }}"
           echo "contains build=${{ contains(join(github.event.commits.*.message, ' '), 'build') }}"
+          echo "PR Title=${{ github.event.pull_request.title }}"
+          echo "PR Title contains build=${{ contains(github.event.pull_request.title, 'build') }}"
 
   test2:
     runs-on: ubuntu-latest
@@ -25,3 +27,5 @@ jobs:
         run: |
           echo "commit message=${{ join(github.event.commits.*.message, ' ') }}"
           echo "contains build=${{ contains(join(github.event.commits.*.message, ' '), 'build') }}"
+          echo "PR Title=${{ github.event.pull_request.title }}"
+          echo "PR Title contains build=${{ contains(github.event.pull_request.title, 'build') }}"
