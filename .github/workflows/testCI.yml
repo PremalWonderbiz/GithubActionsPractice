@@ -15,3 +15,10 @@ jobs:
 
     steps:
       - run: echo "Tests triggered"
+             $containsBuild = contains(
+              join(github.event.commits.*.message, ' '),
+              '[build]'
+              )
+             $commitMessage = join(github.event.commits.*.message, ' ')
+             echo "contains Build=$containsBuild"
+             echo "commit message=$commitMessage"
